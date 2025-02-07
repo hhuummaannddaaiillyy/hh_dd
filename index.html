@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Image</title>
+    <style>
+        html, body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            width: 100%;
+        }
+        img {
+            max-width: 650px;
+            width: 90%; /* Ensures better compatibility on mobile */
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            img {
+                width: 95%; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="your-image.jpg" alt="Centered Image">
+</body>
+</html>
 
