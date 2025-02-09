@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First</title>
+    <style>
+        html, body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            width: 100%;
+            overflow: hidden;
+        }
+        img {
+            max-width: 700px;
+            width: 90%; /* Ensures better compatibility on mobile */
+            height: auto;
+            cursor: grab;
+            position: absolute;
+        }
+        @media (max-width: 768px) {
+            img {
+                width: 95%; /* Adjust for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://github.com/hhuummaannddaaiillyy/hh_dd/blob/main/storage/images-2025/2025-02-06_03_hhdd-waves2.jpg" alt="Centered Image" id="draggable">
+    <script>
+        const img = document.getElementById('draggable');
+        let isDragging = false;
+        let offsetX, offsetY;
+
+        function startDrag(e) {
+            isDragging = true;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            offsetX = clientX - img.offsetLeft;
+            offsetY = clientY - img.offsetTop;
+            img.style.cursor = 'grabbing';
+        }
+
+        function onMove(e) {
+            if (isDragging) {
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                img.style.left = `${clientX - offsetX}px`;
+                img.style.top = `${clientY - offsetY}px`;
+            }
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            img.style.cursor = 'grab';
+        }
+
+        img.addEventListener('mousedown', startDrag);
+        img.addEventListener('touchstart', startDrag);
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('touchmove', onMove);
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('touchend', stopDrag);
+    </script>
+</body>
+</html>
+
 
